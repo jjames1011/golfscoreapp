@@ -1,55 +1,47 @@
 {% extends "base.html" %} {% block content%}
 
-<h1>Signup for an Account:
-    </h1>
-<form action="/signup" method="post">
-  <table>
-    <tr>
-      <td>
-        <label>Username:</label>
-      </td>
-      <td>
-        <input name="username" type="text" value="{{username}}" />
-      </td>
-      <td>
-        <p class="username_error">{{username_error}}</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label>Password:</label>
-      </td>
-      <td>
-        <input name="password" type="password" value="{{password}}" />
-      </td>
-      <td>
-        <p class="password_error1">{{password_error1}}</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label>Verify Password:</label>
-      </td>
-      <td>
-        <input name="verify" type="password" value="{{verify}}" />
-      </td>
-      <td>
-        <p class="password_error"> {{password_error2}}</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label>Email Address:</label>
-      </td>
-      <td>
-        <input name="email" type="text" value="{{email}}" />
-      </td>
-      <td>
-        <p class="email_error"> {{email_error}}</p>
-      </td>
-    </tr>
-  </table>
-  <input type="submit" />
-</form>
-<p>Already a user? Login <strong><a href="/">here</a></strong></p>
+<link rel="stylesheet" href="/static/css/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+
+<div class="signin_styling text-center">
+  <div class="container">
+    <div class="titles">
+      <h1 class="signup_title title_styling text-center font-weight-bold">Signup for an Account</h1><br>
+    </div>
+  </div>
+
+<div class='container'>
+  <div class='row'>
+    <div id='sign-in-form'>
+      <div class="box_styling" id=id='sign-in-form'>
+        <form action="/signup" method="post">
+
+          <label for='username'><strong>Username:</strong></label><br>
+          <input name="username" type="text" value="{{username}}" />
+          <p class="username_error">{{username_error}}</p>
+
+          <label for='password'><strong>Password:</strong></label><br>
+          <input name="password" type="password" value="{{password}}" />
+          <p class="email_error">{{password_error1}}</p>
+
+          <label for='verify'><strong>Verify Password:</strong></label><br>
+          <input name="verify" type="password" value="{{verify}}" />
+          <p class="password_error">{{password_error2}}</p>
+
+          <label for='email'><strong>Email Address:</strong></label><br>
+          <input name="email" type="text" value="{{email}}" />
+          <p class="email_error">{{email_error}}</p>
+
+          <div class="signup_button">
+            <input class="btn btn-primary text-center" type="submit" value="Submit"><br><br>
+          </div>
+
+          <p>Already a user? Login <strong><a href="/">here</a></strong></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

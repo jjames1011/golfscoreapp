@@ -1,48 +1,87 @@
 {% extends "base.html" %} {% block content%}
-<h3>Leaderboard</h3>
 
-<table style="width:50%">
+<link rel="stylesheet" href="/static/css/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+
+<div>
+  <div class="player_names2 card">
+    <div class="card-body">
+      <h3 class="leaderboard_title">Leaderboard</h3><br>
+      <div class="leaderboard_round">
+        <p>Course: {{course}}</p>
+        <p>Round: {{round_num}}</p>
+        <p>Last Hole Played: {{last_hole_played}}</p>
+      </div>
+    </div>
+  </div>
 
   <!--TODO:  Update with round 1, round 2, and round 3 score columns-->
-  <h2>Course: {{course}}</h2>
-  <h2>Round: {{round_num}}</h2>
-
 
   <!--Leaderboard table with columns for rank, player name, round 1 score, round 2 score, round 3 score and overall score-->
+  <div class="player_names2 card" ;>
+    <div class="card-body">
+      <h5>Total scores</h5> {% if user %}
+      <h2>Go back to <a href="/score_input"> Score Input</a></h2> {% endif %}
+    </div>
+  </div>
 
   <table class="table table-hover table-inverse">
     <thead>
-      <!--<tr>
-        <th>Rank</th>
+      <tr class="score_input_header">
+        <th>Player Rank</th>
         <th>Player Name</th>
         <th>Round 1 Score</th>
-        <th>Round 2 Score</th>
-        <th>Round 3 Score</th>
-        <th>Overall Score</th>
-      </tr>-->
+      </tr>
     </thead>
-    <tbody>
+    <tbody class="score_input_body">
       <tr>
         <th scope="row">1</th>
+        {% if player_names %}
         <td>{{player_names[0]}}</td>
+        {% endif%} {% if player_Names_List %}
+        <td>{{player_Names_List[0]}}</td>
+        {% endif %}
         <td>{{player_scores[0]}}</td>
+
       </tr>
       <tr>
         <th scope="row">2</th>
+        {% if player_names %}
         <td>{{player_names[1]}}</td>
+        {% endif %} {% if player_Names_List %}
+        <td>{{player_Names_List[1]}}</td>
+        {% endif %}
         <td>{{player_scores[1]}}</td>
       </tr>
       <tr>
         <th scope="row">3</th>
+        {% if player_names %}
         <td>{{player_names[2]}}</td>
+        {% endif %} {% if player_Names_List %}
+        <td>{{player_Names_List[2]}}</td>
+        {% endif %}
         <td>{{player_scores[2]}}</td>
       </tr>
       <tr>
         <th scope="row">4</th>
+        {% if player_names %}
         <td>{{player_names[3]}}</td>
+        {% endif %} {% if player_Names_List %}
+        <td>{{player_Names_List[3]}}</td>
+        {% endif %}
         <td>{{player_scores[3]}}</td>
       </tr>
     </tbody>
   </table>
 
-  {% endblock %}
+  <div class="player_names2 card">
+    <div class="card-body">
+      {% if last_hole_played >= 18 and session['user'] %}
+      <h3>Proceed to<a href="/score_input"> Round {{ session['round_num'] }}</a></h3> {% elif session['user'] %}
+      <h3>Return to<a href="/score_input"> Score Input</a></h3> {% elif not session['user'] %}
+      <h3>Back To <a href='/list_tournaments'>Tournaments</a> </h3> {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

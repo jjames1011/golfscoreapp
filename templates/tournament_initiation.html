@@ -1,24 +1,38 @@
 {% extends "base.html" %} {% block content %}
-<h1>Setting up round for {{course}}</h1>
+
+<link rel="stylesheet" href="/static/css/styles.css">
+
+<div>
+    <h5 style="color: #ff0000; text-align: center"><strong> {{name_Error}}</strong> </h5> 
+</div>
 
 <form action="/process_players" method="post">
 
   <table class="table table-hover table-inverse">
-    <thead>
-      <tr>
-        <th>Player Name</th>
-      </tr>
-    </thead>
-    <tbody>
+
+    <div class="player_names1 card">
+      <div class="card-body">
+        <h3>Setting up round for: </h3>
+        <h5>{{course}}</h5><br>
+        <label>Tournament Name:  </label>
+        <input type='text' name='tournament_name' value='{{t_Name}}'/>
+      </div>
+    </div>
+
+    <div class="player_names2 card";>
+      <div class="card-body">
+        <h5>Player Names:</h5>
+      </div>
+    </div>
+
+    <!--using score_input_body class for styling-->
+    <tbody class="score_input_body">
       <tr>
         <td>
           <label>Player 1 Name:</label>
         </td>
         <td>
-          <input name="player1" type="text" />
-        </td>
-        <td>
-          <p class="name_error">{{name_error}}</p>
+          <input name="player1" type="text" value="{{p1_Name}}" />
         </td>
       </tr>
       <tr>
@@ -26,10 +40,7 @@
           <label>Player 2 Name:</label>
         </td>
         <td>
-          <input name="player2" type="text" />
-        </td>
-        <td>
-          <p class="name_error">{{name_error}}</p>
+          <input name="player2" type="text" value="{{p2_Name}}" />
         </td>
       </tr>
       <tr>
@@ -37,10 +48,7 @@
           <label>Player 3 Name:</label>
         </td>
         <td>
-          <input name="player3" type="text" />
-        </td>
-        <td>
-          <p class="name_error">{{name_error}}</p>
+          <input name="player3" type="text" value="{{p3_Name}}" />
         </td>
       </tr>
       <tr>
@@ -48,16 +56,15 @@
           <label>Player 4 Name:</label>
         </td>
         <td>
-          <input name="player4" type="text" />
-        </td>
-        <td>
-          <p class="name_error">{{name_error}}</p>
+          <input name="player4" type="text" value="{{p4_Name}}" />
         </td>
       </tr>
     </tbody>
   </table>
 
-  <input type="Submit" value='Start Round!' />
+  <div class="submit_btn">
+    <input class="scsubmit_text btn-lg btn-primary text-center" type="Submit" value='Start Round!'>
+  </div>
 
 </form>
 

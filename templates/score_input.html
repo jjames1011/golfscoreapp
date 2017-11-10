@@ -1,21 +1,54 @@
 {% extends "base.html" %} {% block content %}
 
-<h3>Input Scores:</h3>
-<h2>Round: {{round_num}}</h2>
-<h2>Hole: {{hole_num}}</h2>
-<h2>Par: {{par_num}}</h2>
 
+<link rel="stylesheet" href="/static/css/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+
+<div>
+    {% if errors > "" %}
+    <h5 style="color: #ff0000; text-align: center"><strong>{{ error1 }}</strong></h5>
+    <h5 style="color: #ff0000; text-align: center"><strong>{{ error2 }}</strong></h5>
+    <h5 style="color: #ff0000; text-align: center"><strong>{{ error3 }}<strong></h5>
+    <h5 style="color: #ff0000; text-align: center"><strong>{{ error4 }}<strong></h5>  
+    {% endif %}
+  </div>
+
+<div class="info-row" style="display: flex; justify-content: space-around; padding-bottom: 30px; padding-top: 20px;">
+
+  <div class="round_card card" style="float: center; border: 1px solid; width: 8rem; height: 8rem; text-align: center;">
+    <div class="card-body">
+      <h4 class="card-title">Round</h4>
+      <h4>{{round_num}}</h4>
+    </div>
+  </div>
+
+  <div class="round_card card" style="float: center; border: 1px solid; width: 8rem; height: 8rem; text-align: center;">
+    <div class="card-body">
+      <h4 class="card-title">Hole</h4>
+      <h4>{{hole_num}}</h4>
+    </div>
+  </div>
+
+  <div class="round_card card" style="float: right; border: 1px solid; width: 8rem; height: 8rem; text-align: center;">
+    <div class="card-body">
+      <h4 class="card-title">Par<h4>
+      <h4>{{par_num}}</h4>
+    </div>
+  </div>
+
+</div>
+    
 <form action='/process_score' method='post'>
 
   <table class="table table-hover table-inverse">
     <thead>
-      <tr>
+      <tr class="score_input_header">
         <th>Player Name</th>
         <th>Score</th>
-
       </tr>
     </thead>
-    <tbody>
+    <tbody class="score_input_body">
       <tr>
         <td>{{players[0].name}}</td>
         <td><input type="text" name="player_1_score" placeholder="Enter Score"></td>
@@ -35,7 +68,11 @@
     </tbody>
   </table>
 
-  <input type='submit' value='Submit Scores!'>
+  <div class="submit_btn">
+    <input class="scsubmit_text btn-lg btn-primary text-center" type="submit" value="Submit Scores!">
+  </div>
+
+
 </form>
 
 

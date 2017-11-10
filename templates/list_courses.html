@@ -1,11 +1,26 @@
- {% extends "base.html" %} {% block content %}
-<h1>Select a course:</h1>
-<!--TODO:  Update the routes once routes are available-->
-<form action='/initiate_tournament' method='post'>
-  {% for course in courses %}
+{% extends "base.html" %} 
 
-  <input type='radio' name='course' value='{{course.name}}'>
-  <label for='{{course.name}}'>{{course.name}}</label> {% endfor %} <input type='submit' value='Start Tournament'>
-</form>
+<link rel="stylesheet" href="/static/css/styles.css">
+
+{% block content %}
+<div class="round_selector card">
+  <div class="card-body">
+    <h3>Select a course:</h3><br>
+    <form action='/initiate_tournament' method='post'>
+      {% for course in courses %}
+      <input type='radio' name='course' value='{{course.name}}'>
+      <label for='{{course.name}}'>{{course.name}}</label><br> 
+      {% endfor %} 
+      <div class="submit_button"><br>
+        <input class="scsubmit_text btn-lg btn-primary text-center" type="submit" value='Start Tournament'>
+      </div>
+    </form>
+  </div>
+</div>
 
 {% endblock %}
+
+
+
+
+

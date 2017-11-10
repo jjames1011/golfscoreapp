@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+<link rel="stylesheet" href="/static/css/styles.css">
+
+{% block content%}
+
+<div class="list_tournaments_card">
+  <div class="container">
+    <h3>Tournaments:</h3> {% if tournaments %} {% for tournament in tournaments %}
+    <a href='/leaderboard?tournament_id={{tournament.id}}'>
+      <p>{{tournament.name}}</p>
+    </a>
+    {% endfor%} {% endif %}
+  </div>
+  <br>
+  <div class="container">
+    <h5>Click <a href='/'>here</a> to go home </h5>
+  </div>
+</div>
+
+{% endblock %}
